@@ -5,7 +5,6 @@
 
 package exemplossolid;
 
-import exemplossolid.Connection.ConexaoAPI;
 
 /**
  *
@@ -17,21 +16,32 @@ public class ExemplosMainSOLID {
          * @param args the command line arguments
          */
         public static void main(String[] args) {
-
-                Instituicao instituicao = new Instituicao();
-
-                instituicao.criarContasAleatoriasAPI();
+                //SOLID
                 
+                //SPR - Principio da Responsabilidade Unica
+                //OCP - Principio do Aberto/Fechado
+                //LSP - Principio da Substituição de liskov
+                //ISP - Principio da Segregação da Interface
+                //DIP - Principio da Inversão de Dependencia
+                
+                
+                Instituicao instituicao = new Instituicao();
+                instituicao.criarContasAleatoriasAPI();
+                      
                 instituicao.getContasCorrente().forEach((ContaCorrente conta) -> {
-                        System.out.println("Conta Corrente: " + conta.getNumeroConta() + " Digito: " + conta.getDigitoConta() + " Saldo: " + conta.getSaldoConta() + " ==>  " + conta.getCliente().getNome());
+                        String tipo = conta.getCliente().getTipoCliente() == 1 ? "Conta Pessoa Juridica" : "Conta Pessoa Fisica";
+                        System.out.println("Conta Corrente: " + conta.getNumeroConta() + " Digito: " + conta.getDigitoConta() + " Saldo: " + conta.getSaldoConta() + " " + tipo + " ==>  " + conta.getCliente().getNome() );
                 } );
                 
                 instituicao.getContasPoupanca().forEach((ContaPoupanca conta) -> {
-                        System.out.println("Conta Poupança: " + conta.getNumeroConta() + " Digito: " + conta.getDigitoConta() + " Saldo: " + conta.getSaldoConta()+ " ==>  " + conta.getCliente().getNome());
+                        String tipo = conta.getCliente().getTipoCliente() == 1 ? "Conta Pessoa Juridica" : "Conta Pessoa Fisica";
+                        System.out.println("Conta Poupança: " + conta.getNumeroConta() + " Digito: " + conta.getDigitoConta() + " Saldo: " + conta.getSaldoConta()+  " " + tipo +" ==>  " + conta.getCliente().getNome());
                 } );
                 
                 instituicao.getContasSalario().forEach((ContaSalario conta) -> {
-                        System.out.println("Conta Salario: " + conta.getNumeroConta() + " Digito: " + conta.getDigitoConta() + " Saldo: " + conta.getSaldoConta()+ " ==>  " + conta.getCliente().getNome());
+                        String tipo = conta.getCliente().getTipoCliente() == 1 ? "Conta Pessoa Juridica" : "Conta Pessoa Fisica";
+                        System.out.println("Conta Salario: " + conta.getNumeroConta() + " Digito: " + conta.getDigitoConta() + " Saldo: " + conta.getSaldoConta()+  " " + tipo + " ==>  " + conta.getCliente().getNome());
                 } );
+                   
         }
 }

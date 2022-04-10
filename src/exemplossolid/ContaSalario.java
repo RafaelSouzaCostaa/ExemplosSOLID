@@ -12,7 +12,7 @@ package exemplossolid;
 public class ContaSalario extends Conta{
 
     public ContaSalario(long numeroConta, int digitoConta, Pessoa cliente) {
-        super(numeroConta, digitoConta, cliente);
+        super(numeroConta, digitoConta, cliente, Constante.CONTA_SALARIO);
     }
 
 } 

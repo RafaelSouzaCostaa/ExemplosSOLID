@@ -33,6 +33,7 @@ public class Instituicao {
         public void setContaSalario(ContaSalario conta){
                 contasSalario.add(conta);
         }
+        
         public  void criarContasAleatoriasAPI(){
                 
                 ArrayList<Pessoa> pessoasNomes =ConexaoAPI.buscarPessoas();
@@ -48,17 +49,19 @@ public class Instituicao {
                         if(probabilidade >= 0.55000){ //Conta Corrente
                         
                                 contasCorrente.add(new ContaCorrente(numConta, digito, (Math.round(saldoAleatorio*100.0)/100.0), pessoasNomes.get(i)));
-                             
-                        }else if(probabilidade <= 0.45000){ //Conta Poupança
                                 
+                        }else if(probabilidade <= 0.45000){ //Conta Poupança
+                                pessoasNomes.get(i).setTipoCliente(radom.nextInt(2)+1);
                                 contasPoupanca.add(new ContaPoupanca(numConta, digito, (Math.round(saldoAleatorio*100.0)/100.0), pessoasNomes.get(i)));
                                 
                         }else{ //Conta Salario
-                                
+                                pessoasNomes.get(i).setTipoCliente(Constante.CLIENTE_PF);
                                 contasSalario.add(new ContaSalario(numConta, digito, pessoasNomes.get(i)));
                                 
                         }
+                        
                 }
+                
         }
 
         public ArrayList<ContaCorrente> getContasCorrente() {

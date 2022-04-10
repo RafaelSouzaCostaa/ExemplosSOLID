@@ -12,6 +12,6 @@ package exemplossolid;
 public class ContaPoupanca extends Conta{
     
     public ContaPoupanca(long numeroConta, int digitoConta, double saldo, Pessoa cliente) {
-        super(numeroConta, digitoConta, saldo, cliente);
+        super(numeroConta, digitoConta, saldo, cliente, Constante.CONTA_POUPANCA);
     }
 }

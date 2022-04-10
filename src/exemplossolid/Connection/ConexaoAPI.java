@@ -16,13 +16,15 @@ import java.util.ArrayList;
  *
  * @author Rafael de Souza Costa
  */
-public class ConexaoAPI {
+public class ConexaoAPI{
     
+        //DIP - Principio da Inversão de Dependencia
+        
         static String busca = "https://servicodados.ibge.gov.br/api/v2/censos/nomes/ranking";
         static int exitoCode = 200;
         static protected ArrayList<Pessoa> pessoa = new ArrayList<>();
         
-        public static ArrayList<Pessoa> buscarPessoas(){
+        public static ArrayList<Pessoa> buscarPessoas() {
                                 
                 try {
                         URL url = new URL(busca);
@@ -45,7 +47,6 @@ public class ConexaoAPI {
 
                 } catch (Exception e) {
                 }
-                
                 return pessoa;
         }
 }

@@ -6,20 +6,25 @@
 package exemplossolid;
 
 import java.util.Objects;
-import java.util.logging.Logger;
+import java.util.Random;
 
 /**
  *
  * @author Rafael de Souza Costa
  */
-public class Pessoa {
-    private String nomeCliente; 
-
-        public Pessoa() {
-        }
+public class Pessoa implements IIdentificador{
+        
+        private int identificacao = 0;
+        private String nomeCliente;
+         private int tipoCliente;
 
         public Pessoa(String nome) {
                 this.nomeCliente = nome;
+        }
+
+        public Pessoa(String nome, int tipoPessoa) {
+                this.nomeCliente = nome;
+                this.tipoCliente = tipoPessoa;
         }  
 
         public String getNome() {
@@ -30,10 +35,19 @@ public class Pessoa {
                 this.nomeCliente = nome;
         }
 
+        public int getTipoCliente() {
+                return tipoCliente;
+        }
+
+        public void setTipoCliente(int tipoCliente) {
+                this.tipoCliente = tipoCliente;
+        }
+
         @Override
         public int hashCode() {
-                int hash = 5;
-                hash = 19 * hash + Objects.hashCode(this.nomeCliente);
+                int hash = 3;
+                hash = 59 * hash + Objects.hashCode(this.nomeCliente);
+                hash = 59 * hash + Objects.hashCode(this.tipoCliente);
                 return hash;
         }
 
@@ -52,14 +66,27 @@ public class Pessoa {
                 if (!Objects.equals(this.nomeCliente, other.nomeCliente)) {
                         return false;
                 }
+                if (!Objects.equals(this.tipoCliente, other.tipoCliente)) {
+                        return false;
+                }
                 return true;
+        } 
+        
+        //Principio da Segregação da Interface - metodo não necessario para essa class
+
+        @Override
+        public int getIdentificadorCliente() {
+                Random random = new Random();
+                
+                if(this.identificacao == 0){
+                        this.identificacao = random.nextInt(100000000);
+                        return this.identificacao;
+                }
+                return this.identificacao;
         }
 
         @Override
-        public String toString() {
-                return "Pessoa{" + "nome=" + nomeCliente +  '}';
+        public int getIdentificadorConta() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         }
-        private static final Logger LOG = Logger.getLogger(Pessoa.class.getName());
-    
-    
 }
