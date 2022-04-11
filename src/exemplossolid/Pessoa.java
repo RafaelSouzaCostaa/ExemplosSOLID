@@ -12,7 +12,7 @@ import java.util.Random;
  *
  * @author Rafael de Souza Costa
  */
-public class Pessoa implements IIdentificador{
+public class Pessoa implements I_IdentificadorCliente{
         
         private int identificacao = 0;
         private String nomeCliente;
@@ -71,8 +71,6 @@ public class Pessoa implements IIdentificador{
                 }
                 return true;
         } 
-        
-        //Principio da Segregação da Interface - metodo não necessario para essa class
 
         @Override
         public int getIdentificadorCliente() {
@@ -83,10 +81,5 @@ public class Pessoa implements IIdentificador{
                         return this.identificacao;
                 }
                 return this.identificacao;
-        }
-
-        @Override
-        public int getIdentificadorConta() {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         }
 }

@@ -9,7 +9,6 @@ package exemplossolid;
  *
  * @author Rafael de Souza Costa
  */
-public interface IIdentificador {
-        public int getIdentificadorCliente();
+public interface I_IdentificadorConta {
         public int getIdentificadorConta();
 }

@@ -11,7 +11,7 @@ import java.util.Random;
  *
  * @author Rafael de Souza Costa
  */
-public abstract class Conta implements IIdentificador{
+public abstract class Conta implements I_IdentificadorConta{
     private long numeroConta;
     private int digitoConta;
     private double saldoConta = 0.0;
@@ -65,54 +65,15 @@ public abstract class Conta implements IIdentificador{
         public void setCliente(Pessoa cliente) {
                 this.cliente = cliente;
         }
-        
-        //Principio de Substituição de liskov - classes filhas não implementa - poupança e salario
-        public boolean solicitarEmprestimo(){
-                if(this.identificacao == Constante.CONTA_CORRENTE){
-                        return true;
-                }else if(this.identificacao == Constante.CONTA_SALARIO || this.identificacao == Constante.CONTA_POUPANCA){
-                        return false;
-                }
-                return false;
-        }
-        
-        //Principio do Aberto/Fechado aberto para extenção e fechado para modificação
-        public double calcularRendimentos(){
-                if(this.getCliente().getTipoCliente() == Constante.CONTA_CORRENTE){
-                        saldoConta = (Constante.TAXA_RENDIMENTOS_CONTA_CORRENTE / 100.0) * saldoConta;
-                }else if(this.getCliente().getTipoCliente() == Constante.CONTA_POUPANCA){ //IF add para verificar a adição do cliente PJ - deveria ter implementando uma interface 
-                        saldoConta = (Constante.TAXA_RENDIMENTOS_CONTA_POUPANCA / 100.0) * saldoConta;
-                }
-                return saldoConta; 
-        }
-        
-        //Principio da Responsabilidade Unica
-        public void conexaoBancoDeDados(){
-                /*------------------------------*/ 
-        }
-        
-        public void createContaDAO(){
-                /*------------------------------*/
-                
-                /* Calcular juros Rendimento */
-        }
-        
-        public void updateContaDAO(){
-                /*------------------------------*/
-        }
-        
-        public void deleteContaDAO(){
-                /*------------------------------*/
-        }
-          
 
-        //Principio da Segregação da Interface - metodo não necessario para essa class
-        
-        @Override
-        public int getIdentificadorCliente() {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        public int getIdentificacao() {
+                return identificacao;
         }
 
+        public void setIdentificacao(int identificacao) {
+                this.identificacao = identificacao;
+        }
+ 
         @Override
         public int getIdentificadorConta() {
              Random random = new Random();

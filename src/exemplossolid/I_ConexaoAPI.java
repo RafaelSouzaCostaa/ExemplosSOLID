@@ -10,8 +10,8 @@ import java.net.HttpURLConnection;
  *
  * @author Rafael de Souza Costa 
  */
-public interface InterfaceConexaoAPI {
+public interface I_ConexaoAPI {
         
-        public HttpURLConnection conexaoAPI();
+          public HttpURLConnection conexaoPessoasAPI();
         
 }

@@ -5,7 +5,6 @@
 
 package exemplossolid;
 
-import exemplossolid.Connection.ConexaoAPI;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -36,7 +35,7 @@ public class Instituicao {
         
         public  void criarContasAleatoriasAPI(){
                 
-                ArrayList<Pessoa> pessoasNomes =ConexaoAPI.buscarPessoas();
+                ArrayList<Pessoa> pessoasNomes = new BuscarPessoas().criarPessoas();
                 for(int i = 0; i < pessoasNomes.size(); i++ ){
                         Random radom = new Random();
                         
